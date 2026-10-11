@@ -1,0 +1,45 @@
+@model List<homework.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Products</h2>
+
+<hr />
+<a class="btn btn-primary mb-3"
+   asp-controller="Product"
+   asp-action="Create">Add New</a>
+
+@if (Model.Any())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>@(product.Category?.Name ?? "No Category")</td>
+                    <td>@product.CreatedAt.ToString("yyyy/MM/dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No Data in our database!
+    </div>
+}
