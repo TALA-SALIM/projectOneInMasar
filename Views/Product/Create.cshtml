@@ -8,7 +8,8 @@
 
 <form asp-controller="Product"
       asp-action="Create"
-      method="post">
+      method="post"
+      enctype="multipart/form-data">
 
     @Html.AntiForgeryToken()
 
@@ -60,12 +61,11 @@
 </div>
 
     <div class="mb-3">
-        <label asp-for="ImageUrl" class="form-label">
-            Image URL
-        </label>
-        <input asp-for="ImageUrl" class="form-control" />
-        <span asp-validation-for="ImageUrl"
+        <label asp-for="ImageFile" class="form-label">Product image</label>
+        <input asp-for="ImageFile" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" />
+        <span asp-validation-for="ImageFile"
               class="text-danger"></span>
+        <small class="form-text">JPG, PNG, or WEBP; maximum 5 MB.</small>
     </div>
 
     <button type="submit" class="btn btn-primary">

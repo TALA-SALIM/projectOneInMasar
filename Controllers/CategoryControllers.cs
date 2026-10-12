@@ -32,13 +32,11 @@ public CategoryController(ApplicationDbContext db)
 
 public IActionResult Index(string searchKey)
 {
-    var categories = _db.Categories
-        .Where(x => !x.IsDelete);
+    var categories = _db.Categories.Where(x => !x.IsDelete);
 
     if (!string.IsNullOrWhiteSpace(searchKey))
     {
-        categories = categories.Where(
-            x => x.Name.Contains(searchKey)
+        categories = categories.Where(x => x.Name.Contains(searchKey)
         );
     }
 ViewData["msg"] = "welcome to category page";
