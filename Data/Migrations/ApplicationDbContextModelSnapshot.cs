@@ -16,11 +16,7 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     // If you encounter a merge conflict in the line below, it means you need to
     // discard one of the migration branches and recreate its migrations on top of
     // the other branch. See https://aka.ms/efcore-docs-migrations-conflicts for more info.
-<<<<<<< HEAD
     public override string LastMigrationId => "20261013111130_AddCreatedAtColumnFix";
-=======
-    public override string LastMigrationId => "20261011151142_AddBaseEntityFields";
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
 
     protected override void BuildModel(ModelBuilder modelBuilder)
     {
@@ -82,73 +78,6 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("AspNetRoleClaims", (string)null);
             });
 
-<<<<<<< HEAD
-=======
-        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-            {
-                b.Property<string>("Id")
-                    .HasColumnType("text");
-
-                b.Property<int>("AccessFailedCount")
-                    .HasColumnType("integer");
-
-                b.Property<string>("ConcurrencyStamp")
-                    .IsConcurrencyToken()
-                    .HasColumnType("text");
-
-                b.Property<string>("Email")
-                    .HasMaxLength(256)
-                    .HasColumnType("character varying(256)");
-
-                b.Property<bool>("EmailConfirmed")
-                    .HasColumnType("boolean");
-
-                b.Property<bool>("LockoutEnabled")
-                    .HasColumnType("boolean");
-
-                b.Property<DateTimeOffset?>("LockoutEnd")
-                    .HasColumnType("timestamp with time zone");
-
-                b.Property<string>("NormalizedEmail")
-                    .HasMaxLength(256)
-                    .HasColumnType("character varying(256)");
-
-                b.Property<string>("NormalizedUserName")
-                    .HasMaxLength(256)
-                    .HasColumnType("character varying(256)");
-
-                b.Property<string>("PasswordHash")
-                    .HasColumnType("text");
-
-                b.Property<string>("PhoneNumber")
-                    .HasColumnType("text");
-
-                b.Property<bool>("PhoneNumberConfirmed")
-                    .HasColumnType("boolean");
-
-                b.Property<string>("SecurityStamp")
-                    .HasColumnType("text");
-
-                b.Property<bool>("TwoFactorEnabled")
-                    .HasColumnType("boolean");
-
-                b.Property<string>("UserName")
-                    .HasMaxLength(256)
-                    .HasColumnType("character varying(256)");
-
-                b.HasKey("Id");
-
-                b.HasIndex("NormalizedEmail")
-                    .HasDatabaseName("EmailIndex");
-
-                b.HasIndex("NormalizedUserName")
-                    .IsUnique()
-                    .HasDatabaseName("UserNameIndex");
-
-                b.ToTable("AspNetUsers", (string)null);
-            });
-
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
         modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
             {
                 b.Property<int>("Id")
@@ -177,19 +106,10 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
         modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
             {
                 b.Property<string>("LoginProvider")
-<<<<<<< HEAD
                     .HasColumnType("text");
 
                 b.Property<string>("ProviderKey")
                     .HasColumnType("text");
-=======
-                    .HasMaxLength(128)
-                    .HasColumnType("character varying(128)");
-
-                b.Property<string>("ProviderKey")
-                    .HasMaxLength(128)
-                    .HasColumnType("character varying(128)");
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
 
                 b.Property<string>("ProviderDisplayName")
                     .HasColumnType("text");
@@ -226,19 +146,10 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                     .HasColumnType("text");
 
                 b.Property<string>("LoginProvider")
-<<<<<<< HEAD
                     .HasColumnType("text");
 
                 b.Property<string>("Name")
                     .HasColumnType("text");
-=======
-                    .HasMaxLength(128)
-                    .HasColumnType("character varying(128)");
-
-                b.Property<string>("Name")
-                    .HasMaxLength(128)
-                    .HasColumnType("character varying(128)");
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
 
                 b.Property<string>("Value")
                     .HasColumnType("text");
@@ -332,7 +243,6 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("Products");
             });
 
-<<<<<<< HEAD
         modelBuilder.Entity("homework.Models.User", b =>
             {
                 b.Property<string>("Id")
@@ -406,8 +316,6 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("AspNetUsers", (string)null);
             });
 
-=======
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
         modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
             {
                 b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -419,11 +327,7 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
 
         modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
             {
-<<<<<<< HEAD
                 b.HasOne("homework.Models.User", null)
-=======
-                b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
                     .WithMany()
                     .HasForeignKey("UserId")
                     .OnDelete(DeleteBehavior.Cascade)
@@ -432,11 +336,7 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
 
         modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
             {
-<<<<<<< HEAD
                 b.HasOne("homework.Models.User", null)
-=======
-                b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
                     .WithMany()
                     .HasForeignKey("UserId")
                     .OnDelete(DeleteBehavior.Cascade)
@@ -451,11 +351,7 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
 
-<<<<<<< HEAD
                 b.HasOne("homework.Models.User", null)
-=======
-                b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
                     .WithMany()
                     .HasForeignKey("UserId")
                     .OnDelete(DeleteBehavior.Cascade)
@@ -464,11 +360,7 @@ partial class ApplicationDbContextModelSnapshot : ModelSnapshot
 
         modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
             {
-<<<<<<< HEAD
                 b.HasOne("homework.Models.User", null)
-=======
-                b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
->>>>>>> 3ed1585bec5e2fdd0ff6b542e38bd61b94aedac6
                     .WithMany()
                     .HasForeignKey("UserId")
                     .OnDelete(DeleteBehavior.Cascade)
