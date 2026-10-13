@@ -1,0 +1,28 @@
+@model homework.ViewModel.UpdateCategoryViewModel
+
+<h1>Update Category!</h1>
+<hr />
+
+<form asp-controller="Category" asp-action="update" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="form-label">Category Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Update" />
+
+    <a asp-controller="Category"
+       asp-action="Index"
+       class="btn btn-danger">Back</a>
+
+</form>

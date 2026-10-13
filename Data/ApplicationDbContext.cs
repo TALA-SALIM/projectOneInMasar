@@ -1,0 +1,17 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace homework.Data;
+
+public class ApplicationDbContext : IdentityDbContext<Models.User>
+{
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Models.Product> Products { get; set; }
+
+    public DbSet<Models.Category> Categories { get; set; }
+}

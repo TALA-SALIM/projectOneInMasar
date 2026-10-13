@@ -1,0 +1,82 @@
+@model List<homework.Models.Category>
+
+<h2>Categories</h2>
+
+<hr />
+<h2>@ViewData["msg"]</h2>
+
+<form asp-controller="Category" asp-action="Index" method="get">
+    <div class="input-group mb-3">
+        <input type="text"
+               name="searchKey"
+               class="form-control"
+               placeholder="Search categories..."
+               value="@Context.Request.Query["searchKey"]" />
+
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+
+        <a asp-controller="Category"
+           asp-action="Index"
+           class="btn btn-secondary">
+            Clear
+        </a>
+    </div>
+</form>
+
+<a class="btn btn-primary"
+   asp-controller="Category"
+   asp-action="Create">
+    Add New
+</a>
+
+<br />
+<h2>@TempData["msg"]</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.Name</td>
+                    <td>@category.CreatedAt.ToString("yyyy/MM/dd")</td>
+
+                    <td>
+                        <a class="btn btn-warning"
+                           asp-controller="Category"
+                           asp-action="update"
+                           asp-route-id="@category.Id">
+                            Update
+                        </a>
+
+                        <a class="btn btn-danger"
+                           asp-controller="Category"
+                           asp-action="Delete"
+                           asp-route-id="@category.Id">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No matching categories found!
+    </div>
+}

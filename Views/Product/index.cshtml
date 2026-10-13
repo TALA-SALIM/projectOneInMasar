@@ -1,0 +1,66 @@
+@model List<homework.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Products</h2>
+<hr />
+
+@if (TempData["ProductSuccess"] is string successMessage)
+{
+    <div class="alert alert-success">@successMessage</div>
+}
+
+<form asp-controller="Product" asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchKey" value="@ViewData["SearchKey"]"
+               class="form-control" placeholder="Search by product, description, or category..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Clear</a>
+    </div>
+</form>
+
+<a class="btn btn-primary mb-3" asp-controller="Product" asp-action="Create">Add New</a>
+
+@if (Model.Any())
+{
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td><img src="@product.ImageUrl" alt="@product.Name" style="width:70px;height:70px;object-fit:cover" /></td>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>@(product.Category?.Name ?? "No Category")</td>
+                    <td>@product.CreatedAt.ToString("yyyy/MM/dd")</td>
+                    <td class="text-nowrap">
+                        <a class="btn btn-warning btn-sm" asp-controller="Product" asp-action="Update" asp-route-id="@product.Id">Update</a>
+                        <form asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" method="post" class="d-inline"
+                              onsubmit="return confirm('Delete this product?');">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">No matching products found.</div>
+}

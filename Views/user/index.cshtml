@@ -1,0 +1,36 @@
+@model List<homework.ViewModel.UserViewModel>
+
+    <h1>System Users</h1>
+    <hr />
+
+    <a href="@Url.Action("Create", "User")" class="btn btn-primary">Add User</a>
+    @if (Model.Any())
+{
+    <table class="table">
+       
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Created At</th>
+                <th>Operations</th>
+            </tr>
+        
+      
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th>@user.UserName</th> 
+                    <th>@user.Email</th>
+                    <th>@user.PhoneNumber</th>
+                    <th>@user.CreatedAt.ToString("yyyy-MM-dd")</th>
+                    <th><a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn btn-danger">Delete</a></th>
+                </tr>
+            }
+        
+    </table>
+
+
+
+
+}

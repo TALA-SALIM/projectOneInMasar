@@ -1,0 +1,80 @@
+@model homework.ViewModel.CreateProductViewModel
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<h1>Add New Product</h1>
+
+<form asp-controller="Product"
+      asp-action="Create"
+      method="post"
+      enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">
+            Product Name
+        </label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">
+            Description
+        </label>
+        <textarea asp-for="Description"
+                  class="form-control"></textarea>
+        <span asp-validation-for="Description"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">
+            Price
+        </label>
+        <input asp-for="Price"
+               type="number"
+            
+               class="form-control" />
+        <span asp-validation-for="Price"
+              class="text-danger"></span>
+    </div>
+
+ 
+<div class="mb-3">
+    <label asp-for="CategoryId" class="form-label">
+        Category ID
+    </label>
+    <input asp-for="CategoryId"
+           type="number"
+           min="1"
+           class="form-control" />
+    <span asp-validation-for="CategoryId"
+          class="text-danger"></span>
+</div>
+
+    <div class="mb-3">
+        <label asp-for="ImageFile" class="form-label">Product image</label>
+        <input asp-for="ImageFile" type="file" accept="image/jpeg,image/png,image/webp" class="form-control" />
+        <span asp-validation-for="ImageFile"
+              class="text-danger"></span>
+        <small class="form-text">JPG, PNG, or WEBP; maximum 5 MB.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Save Product
+    </button>
+
+    <a asp-controller="Product"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Cancel
+    </a>
+</form>
